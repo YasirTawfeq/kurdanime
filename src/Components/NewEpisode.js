@@ -25,7 +25,7 @@ function NewEpisode() {
         </ul>
       </div>
         
-      <div className="flex flex-row-reverse flex-wrap justify-evenly ">
+      <div className="flex flex-row-reverse flex-wrap justify-evenly p-0 lg:pl-20 lg:pr-20 ">
          {newEpisod.slice(0,21)?.map((anime)=>{
         return(
         <AnimeCard  key={anime.episodeId} id={anime.episodeId} title={anime.animeTitle} img={anime.animeImg}/>

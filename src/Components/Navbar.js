@@ -2,7 +2,7 @@ import '../index.css';
 import {Link} from 'react-router-dom';
 
 function Navbar() {
-
+ 
   return (
    <nav className= "font-mono w-full h-96  nav-bg mb-7 ">
      <div className="flex flex-row justify-between  text-yellow-300">

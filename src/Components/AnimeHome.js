@@ -52,7 +52,7 @@ function AnimeHome() {
 
         <ul className="w-full lg:w-1/2 mt-3 p-4 text-left  flex flex-wrap justify-evenly">
           {animeDetail.genres?.map((genre)=>{
-            return <li key={genre.index} className="p-1 text-black text-center font-bold text-sm lg:text-lg bg-yellow-300 rounded-lg" >{genre}</li>
+            return <li key={genre.index} className="p-1 text-black text-center font-bold text-sm lg:text-lg bg-yellow-300 rounded-lg mt-1" >{genre}</li>
           })}
         </ul>
      
