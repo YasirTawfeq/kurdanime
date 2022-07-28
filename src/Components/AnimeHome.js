@@ -62,7 +62,7 @@ function AnimeHome() {
        <div className="w-full  mt-3 p-4 text-left">
 
             
-          <ul className="text-yellow-300 ">
+          <ul key={anime.animeId} className="text-yellow-300 ">
             <li>Name : {animeDetail.animeTitle}</li>
             <li>Type : {animeDetail.type}</li>
             <li>Year : {animeDetail.releasedDate}</li>
