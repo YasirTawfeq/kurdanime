@@ -85,7 +85,7 @@ function Watch() {
     
      </center>
 
-     <p className="text-center font-bold text-xl my-14 text-yellow-300">KURD<small>ANIME</small></p>
+     <p className="text-center font-bold text-xl py-14 text-yellow-300">KURD<small>ANIME</small></p>
     
     </div>}
     </>
