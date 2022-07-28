@@ -1,24 +1,52 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url('https://fonts.googleapis.com/css2?family=Boogaloo&family=Lora&family=Yanone+Kaffeesatz&display=swap');
 html{
-  background-color: black;
-  margin:0px;
-  padding:0px;
+  background-color: #374151;
+  margin: 0px;
+  padding: 0px;
 }
 
 body {
-  background-color: black;
-  margin: 0;
+  font-family:cursive;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 35px;
+  margin-bottom: 50px;
+  background-color: #1f2937;
+  border: 1px solid #fde047;
+  border-radius: 24px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .nav-bg{
+  border-top: 0px solid #1f2937;
+  border-radius: 24px 24px 0px 0px;
   background-image: url('./Components/nav.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 600px;
+}
+
+@media (max-width: 992px) {
+html {
+    background-color: black;
+    margin:0;
+    border-top: 1px solid black;
+    border-radius: 20px;
+    padding: 0px;
+  }
+    .nav-bg {
+      border-top: 0px solid;
+      border-radius:0px;
+    }
+        body {
+          margin: 0px;
+          padding: 0px;
+          border: 0px solid #fde047;
+          border-radius:0px;
+        }
 }

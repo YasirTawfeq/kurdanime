@@ -35,14 +35,17 @@ function AnimeHome() {
     return (
     <>
      {loading? 
-    <div className=" flex justify-center items-center mt-52"><HashLoader color={"yellow"} loading={loading} size={60} /></div>
+    <div className=" flex justify-center items-center rounded-3xl  bg-gray-800 min-h-screen text-yellow-300"><HashLoader color={"yellow"} loading={loading} size={60} /></div>
     :<div>
       <>
       {animeList?.map((anime)=>{return(
-     <center key={anime.animeId} className="text-yellow-300">  
-       
-       <img className=" w-full lg:w-1/2 h-80" src={anime.animeImg} alt={anime.animeTitle} />
-       <div className=" w-full lg:w-1/2 mt-2 lg:ml-3 lg:mr-3 p-3 flex justify-center items-center border-b-2 border-yellow-300">
+     <center key={anime.animeId} className="text-yellow-300 ">
+      <div className=" lg:flex flex-row-reverse p-0 m-0 " >
+       <div className="lg:w-1/2">
+       <img className=" w-full h-80 lg:h-full lg:rounded-tr-3xl " src={anime.animeImg} alt={anime.animeTitle} />
+      </div>
+      <div className="lg:w-1/2">
+       <div className=" w-full  mt-2  p-3 flex justify-center items-center border-b-2 border-yellow-300">
         <Link to="/Home" className="fixed top-3 left-3" >
           <svg className=" cursor-pointer bg-yellow-300 w-9 h-9  rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M447.1 256C447.1 273.7 433.7 288 416 288H109.3l105.4 105.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448s-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L109.3 224H416C433.7 224 447.1 238.3 447.1 256z"/></svg>
         </Link>
@@ -50,16 +53,16 @@ function AnimeHome() {
       
        </div>
 
-        <ul className="w-full lg:w-1/2 mt-3 p-4 text-left  flex flex-wrap justify-evenly">
+        <ul className="w-full  mt-3 p-4 text-left  flex flex-wrap justify-evenly">
           {animeDetail.genres?.map((genre)=>{
-            return <li key={genre.index} className="p-1 text-black text-center font-bold text-sm lg:text-lg bg-yellow-300 rounded-lg mt-1" >{genre}</li>
+            return <li key={genre.index} className="p-1 text-gray-600 text-center font-bold text-xs lg:text-sm bg-yellow-300 rounded-lg mt-1" >{genre}</li>
           })}
         </ul>
      
-       <div className="w-full lg:w-1/2 mt-3 p-4 text-left">
+       <div className="w-full  mt-3 p-4 text-left">
 
             
-          <ul className="text-yellow-300">
+          <ul className="text-yellow-300 ">
             <li>Name : {animeDetail.animeTitle}</li>
             <li>Type : {animeDetail.type}</li>
             <li>Year : {animeDetail.releasedDate}</li>
@@ -67,16 +70,19 @@ function AnimeHome() {
             <li>Episods : {animeDetail.totalEpisodes}</li>
             <li className="mt-2">{animeDetail.synopsis}</li>
           </ul>
+
+           <div className="w-full mt-3">
+        <Link to={`/Watch/${anime.animeId}/${title}`}>
+          <div className="w-full p-2 font-bold uppercase text-gray-600 bg-yellow-300 rounded-lg cursor-pointer text-center "> Watch  </div>
+        </Link>
+      </div>
           
 
       </div>
-        
-        
-      <div className="w-full lg:w-1/2 mt-3">
-        <Link to={`/Watch/${anime.animeId}/${title}`}>
-          <div className="w-full p-2 font-bold uppercase text-black bg-yellow-300 rounded-lg cursor-pointer "> Watch  </div>
-        </Link>
+
       </div>
+      </div>  
+      
          
   
       </center>

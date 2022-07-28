@@ -40,11 +40,9 @@ function Home() {
  
       },[input,name])
        
-      name?
-        setTimeout(()=>{
-           setStatu(true);
-        },500)
-        :setStatu(false)
+      if(name){ setTimeout(()=>{ setStatu(true);},500)}
+       
+       
      
         const submitHandler=(e)=>{
         e.preventDefault();
@@ -54,9 +52,9 @@ function Home() {
     <>
      
     {loading? 
-    <div className=" flex justify-center items-center mt-52"><HashLoader color={"yellow"} loading={loading} size={60} /></div>
-    :<div className=" m-5 md:m-3 ">
-      <div className=" font-mono w-full h-10 bg-yellow-300 rounded-xl mt-2 mb-3 p-2 ">
+    <div className=" flex justify-center items-center rounded-3xl  bg-gray-800 min-h-screen text-yellow-300 "><HashLoader color={"yellow"} loading={loading} size={60} /></div>
+    :<div className=" p-0 lg:p-4">
+      <div className=" font-mono w-full h-10 bg-yellow-300 rounded-xl mb-3 p-2 ">
         <ul className="flex justify-evenly ">
         <li className=" text-black font-bold cursor-pointer hover:border-b-2 border-black"><Link to="/" >New Episods</Link></li>
         <li className=" text-black font-bold cursor-pointer border-b-2 border-black"><Link to="/Home" >Home page</Link></li>

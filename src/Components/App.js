@@ -20,7 +20,7 @@ function App() {
   return (
     <div>
     {loading?  
-    <div className=" flex justify-center items-center mt-52 text-yellow-300 text-4xl">
+    <div className=" flex justify-center items-center rounded-3xl  bg-gray-800 min-h-screen text-yellow-300 text-4xl">
     
        <AnimatedText
          type="chars" 

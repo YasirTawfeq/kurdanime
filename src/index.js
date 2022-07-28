@@ -7,6 +7,7 @@ import SignUp from './Components/SignUp'
 import Home from './Components/Home';
 import AnimeHome from './Components/AnimeHome';
 import Watch from './Components/Watch';
+import NotFound from './Components/NotFound'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -18,6 +19,7 @@ root.render(
       <Route path="/Home/:name" element={<Home />} />
       <Route path="/AnimeHome/:id/:title" element={<AnimeHome/>} />
       <Route path="/Watch/:id/:title" element={<Watch/>} />
+      <Route path="/*" element={<NotFound/>}/>
 
     </Routes>
   </BrowserRouter>
