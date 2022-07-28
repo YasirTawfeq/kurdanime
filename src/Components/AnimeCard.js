@@ -1,4 +1,4 @@
-import '../index.css';
+import '../App.css';
 import {Link} from 'react-router-dom'
 
 function Anime(anime) {

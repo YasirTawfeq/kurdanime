@@ -1,4 +1,4 @@
-import '../index.css'
+import '../App.css'
 import AnimeCard from './AnimeCard'
 import {Link} from 'react-router-dom';
 import Axios from 'axios';

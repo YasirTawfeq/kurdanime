@@ -1,5 +1,5 @@
 import React ,{ useState,useEffect } from 'react'
-import '../index.css';
+import '../App.css';
 import Navbar from './Navbar';
 import NewEpisode from './NewEpisode';
 import Footer from './Footer';
