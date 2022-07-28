@@ -22,13 +22,13 @@ function Watch() {
             setLoading(false);
         },2500)
 
-      },[id,epsId])
+      },[id])
 
        useEffect(()=>{
         setLoading(true);
        
         Axios.get(`https://gogoanime.herokuapp.com/vidcdn/watch/${epsId}`)
-        .then((response)=>{setUrl(response.data.Referer);})
+        .then((response)=>{setUrl(response.data.Referer);console.log(response.data.Referer)})
         .catch((e)=>{console.log(e);})
         setTimeout(()=>{
             setLoading(false);
@@ -60,12 +60,12 @@ function Watch() {
 
         <div className="w-full  mt-3 mb-0">
             <div className=" flex justify-center flex-wrap ">
-             
-            <ul className="w-full  mt-3 p-4 text-left  flex flex-wrap justify-evenly">
-               {watchList.genres?.map((genre)=>{
+              <ul className="w-full  mt-3 p-4 text-left  flex flex-wrap justify-evenly">
+                {watchList.genres?.map((genre)=>{
                 return <li key={genre.index} className="p-1 px-3 text-gray-600 text-center font-bold text-xs lg:text-sm bg-yellow-300 rounded-lg mt-1" >{genre}</li>
                 })}
-        </ul>
+              </ul>
+          
             </div>
        
        </div>
@@ -84,6 +84,8 @@ function Watch() {
         </Link>  
     
      </center>
+
+     <p className="text-center font-bold text-xl my-14 text-yellow-300">KURD<small>ANIME</small></p>
     
     </div>}
     </>
