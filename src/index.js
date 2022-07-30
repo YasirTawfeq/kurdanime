@@ -7,7 +7,8 @@ import SignUp from './Components/SignUp'
 import Home from './Components/Home';
 import AnimeHome from './Components/AnimeHome';
 import Watch from './Components/Watch';
-import NotFound from './Components/NotFound'
+import NotFound from './Components/NotFound';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>

@@ -15,12 +15,14 @@ function Watch() {
         setLoading(true);
         
         Axios.get(`https://gogoanime.herokuapp.com/anime-details/${id}`)
-        .then((response)=>{ setWatchList(response.data);setEpsId(response.data.episodesList[0].episodeId)})
+        .then((response)=>{ 
+         setWatchList(response.data);
+         setEpsId(response.data.episodesList[0].episodeId);
+         setLoading(false);
+         console.log(response.data)})
         .catch((e)=>{console.log(e);})
         
-        setTimeout(()=>{
-            setLoading(false);
-        },2500)
+       
 
       },[id])
 
@@ -60,9 +62,9 @@ function Watch() {
 
         <div className="w-full  mt-3 mb-0">
             <div className=" flex justify-center flex-wrap ">
-              <ul className="w-full  mt-3 p-4 text-left  flex flex-wrap justify-evenly">
+              <ul className="w-full  mt-3 p-4 text-left  flex flex-wrap justify-center">
                 {watchList.genres?.map((genre)=>{
-                return <li key={genre.index} className="p-1 px-3 text-gray-600 text-center font-bold text-xs lg:text-sm bg-yellow-300 rounded-lg mt-1" >{genre}</li>
+                return <li key={genre.index} className="p-1 px-2 mx-1 text-yellow-300 text-center font-bold text-xs lg:text-sm border-yellow-300 border-2 rounded-lg mt-2" >{genre}</li>
                 })}
               </ul>
           

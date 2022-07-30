@@ -6,6 +6,7 @@ import Axios from 'axios';
 import { useState,useEffect} from 'react';
 import HashLoader from "react-spinners/HashLoader";
 
+
 function Home() {
  
  /*
@@ -23,7 +24,9 @@ function Home() {
         setLoading(true);
         Axios.get("https://gogoanime.herokuapp.com/popular")
         .then((response)=>{console.log(response.data);
-         setAnomeList(response.data)})
+         setAnomeList(response.data)
+        console.log(response.data)
+        })
         .catch((e)=>{console.log(e);})
         
         setTimeout(()=>{
@@ -41,9 +44,7 @@ function Home() {
       },[input,name])
        
       if(name){ setTimeout(()=>{ setStatu(true);},500)}
-       
-       
-     
+
         const submitHandler=(e)=>{
         e.preventDefault();
         setStatu(true);}
@@ -63,7 +64,7 @@ function Home() {
 
          
 
-        <form className="flex items-center mb-3" onSubmit={submitHandler}>   
+        <form className="flex items-center mb-3 mx-1" onSubmit={submitHandler}>   
           <label htmlFor="simple-search" className="sr-only">Search</label>
           <div className="relative w-full">
             <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
