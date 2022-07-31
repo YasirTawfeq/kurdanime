@@ -30,7 +30,7 @@ function NewEpisode() {
     <div className=" m-5 md:m-3 ">
       <div className=" font-mono w-full h-10 bg-yellow-300 rounded-xl mt-2 mb-3 py-1.5 ">
        <div className="flex justify-between lg:justify-evenly mx-3 ">
-        <div className=" text-sm cursor-pointer my-0 px-2 py-1 hover:bg-gray-500 rounded-lg  bg-gray-800 text-yellow-300 "><Link to="/Home" >Go to Home page</Link></div>
+        <div className=" text-sm cursor-pointer my-0 px-2 py-1 hover:bg-gray-500 rounded-lg  bg-gray-800 text-yellow-300 "><Link to="/Home" >Home page</Link></div>
         <div className="flex">
           <button className=" text-sm  cursor-pointer my-0 px-2 py-1 hover:bg-gray-500 rounded-l-lg  bg-gray-800 text-yellow-300 " onClick={()=>setType(1)} >JP</button>
           <button className=" text-sm  cursor-pointer mx-0.5 px-2 py-1 hover:bg-gray-500   bg-gray-800 text-yellow-300 " onClick={()=>setType(2)} >EN</button>
