@@ -2,10 +2,11 @@ import React from 'react'
 import {useParams, Link} from 'react-router-dom';
 import Footer from './Footer';
 import AnimeCard from './AnimeCard';
+import AnimeSmallCard from './AnimeSmallCard';
 import Axios from 'axios';
 import { useState,useEffect} from 'react';
 import HashLoader from "react-spinners/HashLoader";
-
+import Pagination from '@mui/material/Pagination';
 
 function Home() {
  
@@ -16,38 +17,54 @@ function Home() {
        const {name}=useParams();
        const [loading,setLoading] = useState(false);
        const [animeList,setAnomeList]=useState([]);
+       const [top,setTop]=useState([]);
+       const [movie,setMovie]=useState([]);
        const [state,setStatu] = useState(false);
        const [input,setInput] = useState(name);
        const [search,setSearch]= useState("");
+       const [type,setType]= useState(1);
+       const [page,setPage]= useState(1);
  
        useEffect(()=>{
         setLoading(true);
-        Axios.get("https://gogoanime.herokuapp.com/popular")
+        Axios.get(`https://gogoanime.herokuapp.com/popular?type=${type}&page=${page}`)
         .then((response)=>{console.log(response.data);
          setAnomeList(response.data)
         console.log(response.data)
-        })
-        .catch((e)=>{console.log(e);})
-        
-        setTimeout(()=>{
-            setLoading(false);
-        },1500)
-
-      },[])
+        setLoading(false);
+        }).catch((e)=>{console.log(e);})
+        },[type,page])
 
       useEffect(()=>{
-       
         Axios.get(`https://gogoanime.herokuapp.com/search?keyw=${input}`) 
-        .then((response)=>{console.log(response.data);setSearch(response.data)})
+        .then((response)=>{
+         setSearch(response.data)})
         .catch((e)=>{console.log(e);})
- 
-      },[input,name])
+        },[input,name])
+
+        useEffect(()=>{
+        Axios.get(`https://gogoanime.herokuapp.com/top-airing`) 
+        .then((response)=>{ console.log(response.data.slice(6))
+         setTop(response.data.slice(5))})
+        .catch((e)=>{console.log(e);})
+        },[])
+
+        useEffect(()=>{
+        Axios.get(`https://gogoanime.herokuapp.com/anime-movies`) 
+        .then((response)=>{ console.log(response.data.slice(6))
+         setMovie(response.data.slice(15))})
+        .catch((e)=>{console.log(e);})
+        },[])
        
       if(name){ setTimeout(()=>{ setStatu(true);},500)}
 
         const submitHandler=(e)=>{
         e.preventDefault();
         setStatu(true);}
+
+        const handleChange = (event, value) => {
+       setPage(value);
+       };
       
   return (
     <>
@@ -77,34 +94,102 @@ function Home() {
            <span className="sr-only">Search</span>
          </button>
        </form>
-      
 
-      {state?
-      <div className="flex flex-row-reverse flex-wrap justify-evenly p-0 lg:pl-20 lg:pr-20 ">
-        {/*search? : */}
+        <div className=" font-mono h-10  rounded-xl mt-2 mb-3 py-1.5 mx-3  ">
+       <div className="flex justify-between mx-2 ">
+        <div className="cursor-pointer my-0 px-2 py-0.5 hover:bg-gray-500 rounded-lg  bg-gray-800 text-yellow-300 text-xl lg:text-2xl font-bold ">Popular</div>
+        <div className="flex bg-yellow-300 p-0.5 lg:mr-1 rounded-lg">
+          <button className=" text-xs lg:text-sm  cursor-pointer my-0 px-2 py-0.5 focus:bg-gray-600  hover:bg-gray-500 rounded-l-lg  bg-gray-800 text-yellow-300 " onClick={()=>setType(1)} >JP</button>
+          <button className=" text-xs lg:text-sm  cursor-pointer mx-0.5 px-2 py-0.5 focus:bg-gray-600  hover:bg-gray-500   bg-gray-800 text-yellow-300 " onClick={()=>setType(2)} >EN</button>
+          <button className=" text-xs lg:text-sm  cursor-pointer mr-0.5 px-2 py-0.5 focus:bg-gray-600  hover:bg-gray-500   bg-gray-800 text-yellow-300 " onClick={()=>setType(3)} >CH</button>
+          <button className=" text-xs lg:text-sm  cursor-not-allowed my-0 px-2 py-0.5 focus:bg-gray-600  hover:bg-gray-500 rounded-r-lg  bg-gray-800 text-yellow-300 " disabled>KU<small className="ml-0.5 text-yellow-300  text-xs" >soon</small></button>
+        </div>
+       </div>
+      </div>
+      
+      <div className="flex lg:flex-row-reverse justify-between flex-col-reverse">
+
+      <div className="text-yellow-300 grid grid-cols-1 grid-rows-2  lg:w-1/4 ">
         
+        <div className=" mt-3 p-3">
+          <div className=" font-mono rounded-xl py-1.5  ">
+          <div className="flex flex-col  justify-left bg-gray-700 ml-2 rounded-md p-3 ">
+           
+            <div className="cursor-pointer rounded-lg text-yellow-300 text-left text-xl font-bold mb-0.5 ">
+             Top Airing
+            </div>
+            <div className="flex flex-col-reverse flex-wrap justify-center p-0 ">
+         
+             {top?.map((anime)=>{
+             return(
+             
+            <AnimeSmallCard  key={anime.animeId} id={anime.animeId} num={anime.latestEp} title={anime.animeTitle} img={anime.animeImg}/>
+    
+            )})}
+            </div>
+          
+          </div>
+        </div>
+        </div>
+        
+        <div className=" p-3">
+          <div className=" font-mono rounded-xl py-1.5  ">
+          <div className="flex flex-col  justify-left bg-gray-700 ml-2 rounded-md p-3 ">
+           
+            <div className="cursor-pointer rounded-lg text-yellow-300 text-left text-xl font-bold mb-0.5 ">
+             Upcoming Movie
+            </div>
+            <div className="flex flex-col-reverse flex-wrap justify-center p-0 ">
+         
+             {movie?.map((anime)=>{
+             return(
+             
+            <AnimeSmallCard  key={anime.animeId} id={anime.animeId} num={anime.latestEp} title={anime.animeTitle} img={anime.animeImg}/>
+    
+            )})}
+            </div>
+          
+          </div>
+        </div>
+        </div>
+
+
+      </div>
+
+      <div className=" lg:w-3/4 w-full mt-1">
+      {state?
+      <div className="flex flex-row-reverse flex-wrap justify-evenly p-0  ">
+        {/*search? : */}
+         
          {search?.map((anime)=>{
         return(
              
         <AnimeCard  key={anime.animeId} id={anime.animeId} title={anime.animeTitle} img={anime.animeImg}/>
+        
   
         )})}
-      
-      </div>
-      :<div className="flex flex-row-reverse flex-wrap justify-evenly p-0 lg:pl-20 lg:pr-20 ">
-        {/*search? : */}
         
+      </div>
+      :<>
+      <div className="flex flex-row-reverse flex-wrap justify-evenly p-0  ">
          {animeList?.map((anime)=>{
         return(
              
         <AnimeCard  key={anime.animeId} id={anime.animeId} title={anime.animeTitle} img={anime.animeImg}/>
   
         )})}
+      </div>
+        <div className="bg-gray-500 text-yellow-300 flex  justify-center rounded-lg">
+           <Pagination  count={5} page={page}  onChange={handleChange} />
+       </div>
+       </>}
+       </div>
       
-      </div>}
-       
-       <Footer/>
-    </div>}
+       </div>
+    
+    </div>
+    }
+     <Footer/>
     </>
   )
 }

@@ -30,7 +30,8 @@ function AnimeHome() {
         })
         .catch((e)=>{console.log(e);})
       },[id])
-    
+      let film;
+      if(animeDetail.totalEpisodes>0){film=true}else{film=false};
     return (
     <>
      {loading? 
@@ -69,12 +70,12 @@ function AnimeHome() {
             <li><span className="text-yellow-200">Episodes :</span> {animeDetail.totalEpisodes}</li>
             <li className="mt-2"><span className="text-yellow-200">Description :</span> {animeDetail.synopsis}</li>
           </ul>
-
-           <div className="w-full mt-3">
+      {film?
+      <div className="w-full mt-3">
         <Link to={`/Watch/${anime.animeId}/${title}`}>
           <div className="w-full p-2 font-bold uppercase text-gray-600 bg-yellow-300 rounded-lg cursor-pointer text-center "> Watch  </div>
         </Link>
-      </div>
+      </div>:<div></div>}
           
 
       </div>

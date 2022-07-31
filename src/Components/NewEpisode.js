@@ -32,10 +32,10 @@ function NewEpisode() {
        <div className="flex justify-between lg:justify-evenly mx-3 ">
         <div className=" text-sm cursor-pointer my-0 px-2 py-1 hover:bg-gray-500 rounded-lg  bg-gray-800 text-yellow-300 "><Link to="/Home" >Home page</Link></div>
         <div className="flex">
-          <button className=" text-sm  cursor-pointer my-0 px-2 py-1 hover:bg-gray-500 rounded-l-lg  bg-gray-800 text-yellow-300 " onClick={()=>setType(1)} >JP</button>
-          <button className=" text-sm  cursor-pointer mx-0.5 px-2 py-1 hover:bg-gray-500   bg-gray-800 text-yellow-300 " onClick={()=>setType(2)} >EN</button>
-          <button className=" text-sm  cursor-pointer mr-0.5 px-2 py-1 hover:bg-gray-500   bg-gray-800 text-yellow-300 " onClick={()=>setType(3)} >CH</button>
-          <button className=" text-sm  cursor-not-allowed my-0 px-2 py-1 hover:bg-gray-500 rounded-r-lg  bg-gray-800 text-yellow-300 " disabled>KU<small className="ml-0.5 text-yellow-300  text-xs" >soon</small></button>
+          <button className=" text-sm  cursor-pointer my-0 px-2 py-1 hover:bg-gray-500 rounded-l-lg focus:bg-gray-600  bg-gray-800 text-yellow-300 " onClick={()=>setType(1)} >JP</button>
+          <button className=" text-sm  cursor-pointer mx-0.5 px-2 py-1 hover:bg-gray-500 focus:bg-gray-600   bg-gray-800 text-yellow-300 " onClick={()=>setType(2)} >EN</button>
+          <button className=" text-sm  cursor-pointer mr-0.5 px-2 py-1 hover:bg-gray-500 focus:bg-gray-600   bg-gray-800 text-yellow-300 " onClick={()=>setType(3)} >CH</button>
+          <button className=" text-sm  cursor-not-allowed my-0 px-2 py-1 hover:bg-gray-500 rounded-r-lg focus:bg-gray-600  bg-gray-800 text-yellow-300 " disabled>KU<small className="ml-0.5 text-yellow-300  text-xs" >soon</small></button>
         </div>
        </div>
       </div>
