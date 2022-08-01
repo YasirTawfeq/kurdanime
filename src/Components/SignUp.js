@@ -52,7 +52,7 @@ export default function SignUp() {
             backgroundPosition: 'center',
           }}
         />
-        <Grid item sx={{ bgcolor: 'black' }}  xs={12} sm={8} md={5} component={Paper} elevation={6} square> 
+        <Grid item sx={{ bgcolor: '#1e293b' }}  xs={12} sm={8} md={5} component={Paper} elevation={6} square> 
           <Box
             sx={{
               my: 8,

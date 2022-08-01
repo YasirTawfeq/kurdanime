@@ -17,9 +17,10 @@ function Watch() {
         Axios.get(`https://gogoanime.herokuapp.com/anime-details/${id}`)
         .then((response)=>{ 
          setWatchList(response.data);
-         setEpsId(response.data.episodesList[0].episodeId);
+         const firstEpisode=response.data.episodesList.length(-1);
+         setEpsId(firstEpisode.episodeId);
          setLoading(false);
-         console.log(response.data)})
+         })
         .catch((e)=>{console.log(e);})
         
        
@@ -30,12 +31,13 @@ function Watch() {
         setLoading(true);
        
         Axios.get(`https://gogoanime.herokuapp.com/vidcdn/watch/${epsId}`)
-        .then((response)=>{setUrl(response.data.Referer);console.log(response.data.Referer)})
+        .then((response)=>{
+         setUrl(response.data.Referer);
+         console.log(response.data.Referer)
+        setLoading(false);
+        })
         .catch((e)=>{console.log(e);})
-        setTimeout(()=>{
-            setLoading(false);
-        },2500)
-      },[epsId,url])
+      },[epsId])
 
       
       let urlchange=epsId.lastIndexOf('-');
@@ -52,7 +54,7 @@ function Watch() {
        
        <div className="w-full  ">
 
-        <iframe key={url} className="w-full fixed lg:static top-0 aspect-square lg:aspect-video lg:rounded-t-3xl " src={url}  title={watchList.animeTitle}></iframe>
+        <iframe key={url} className="w-full fixed lg:static top-0 aspect-square lg:aspect-video lg:rounded-t-3xl " allowFullScreen src={url}  title={watchList.animeTitle}></iframe>
       </div>
         
       <div className=" w-full  mt-64 lg:mt-0  top-64 bg-gray-800 shadow-sm shadow-orange-300  p-3 flex justify-between items-center border-b-2 border-yellow-300">
@@ -74,7 +76,7 @@ function Watch() {
 
       <div className=" flex flex-wrap-reverse flex-row-reverse justify-center w-full my-3">
         {watchList.episodesList?.map((eps)=> 
-       <div onClick={()=>{setEpsId(eps.episodeId)}}  key={eps.episodeId} className=" font-bold text-gray-600 w-16 bg-yellow-300 text-xs p-1 rounded-lg m-0.5  cursor-pointer active:bg-red-600  ">
+       <div onClick={()=>{setEpsId(eps.episodeId)}}  key={eps.episodeId} className=" focus:bg-slate-400 hover:bg-yellow-500 font-bold text-gray-600 w-16 bg-yellow-300 text-xs p-1 rounded-md m-0.5  cursor-pointer active:bg-red-600  ">
              {eps.episodeNum} 
        </div>
         )}

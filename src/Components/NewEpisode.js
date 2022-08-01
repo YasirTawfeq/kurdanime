@@ -49,14 +49,10 @@ function NewEpisode() {
         return(
         <AnimeCard  key={anime.episodeId} num={anime.episodeNum} id={anime.animeId} title={anime.animeTitle} img={anime.animeImg} subORdub={anime.subOrDub}/>
         )})}
-
-
-          <div className="bg-yellow-300 rounded-lg my-4">
-           <Pagination count={5} page={page}  onChange={handleChange} />
-          </div>
-          
-        
       </div>
+       <div className="bg-gray-500 text-yellow-300 flex  justify-center rounded-lg">
+           <Pagination  count={5} page={page}  onChange={handleChange} />
+       </div>
     </div>
     </>
   )
