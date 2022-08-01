@@ -17,15 +17,12 @@ function Watch() {
         Axios.get(`https://gogoanime.herokuapp.com/anime-details/${id}`)
         .then((response)=>{ 
          setWatchList(response.data);
-         const firstEpisode=response.data.episodesList.length(-1);
-         setEpsId(firstEpisode.episodeId);
+         const firstEpisode=response.data.episodesList.length-1;
+         setEpsId(response.data.episodesList[firstEpisode].episodeId);
          setLoading(false);
          })
         .catch((e)=>{console.log(e);})
-        
-       
-
-      },[id])
+        },[id])
 
        useEffect(()=>{
         setLoading(true);
