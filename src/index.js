@@ -22,7 +22,7 @@ root.render(
        <Route path="/SignUp" element={<SignUp />} />
        <Route path="/Home" element={<Home />} />
        <Route path="/genre/:genre" element={<Home />} />
-       <Route path="/:like" element={<Like />} />
+       <Route path="/likes" element={<Like />} />
        <Route path="/Home/:name" element={<Home />} />
        <Route path="/AnimeHome/:id/:title" element={<AnimeHome/>} />
        <Route path="/Watch/:id/:title" element={<Watch/>} />
