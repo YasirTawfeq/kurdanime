@@ -1,22 +1,25 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import MediaQuery from 'react-responsive';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
 function Menu() {
-    const anime=[{index:0,genre:"action"},{index:2,genre:"adventure"},{index:3,genre:"cars"},
-                 {index:4,genre:"comedy"},{index:5,genre:"crime"},{index:6,genre:"dementia"},
-                  {index:7,genre:"demons"},{index:8,genre:"drama"},{index:9,genre:"dub"},
-                 {index:10,genre:"ecchi"},{index:11,genre:"family"},{index:12,genre:"fantasy"},
-                 {index:13,genre:"game"},{index:14,genre:"gourmet"},{index:15,genre:"harem"},
-                {index:16,genre:"historical"},{index:17,genre:"horror"},{index:18,genre:"josei"},
-                {index:20,genre:"kids"},{index:22,genre:"magic"},{index:23,genre:"martial-arts"},
-                 {index:24,genre:"mecha"},{index:25,genre:"military"},{index:26,genre:"Mmusic"},
-                  {index:27,genre:"mystery"},{index:28,genre:"parody"},{index:29,genre:"police"},
-                 {index:32,genre:"psychological"},{index:21,genre:"romance"},{index:22,genre:"samurai"},
-                 {index:33,genre:"super-power"},{index:34,genre:"vampire"},{index:35,genre:"yuri"},
-                {index:36,genre:"thriller"},{index:37,genre:"shounen"},{index:38,genre:"shoujo"}]
+    const anime=[{index:0,genre:"action"},{index:1,genre:"adventure"},{index:2,genre:"cars"},
+                 {index:5,genre:"comedy"},{index:4,genre:"crime"},{index:3,genre:"dementia"},
+                  {index:6,genre:"demons"},{index:7,genre:"drama"},{index:8,genre:"sports"},
+                 {index:11,genre:"ecchi"},{index:10,genre:"family"},{index:9,genre:"fantasy"},
+                 {index:12,genre:"game"},{index:13,genre:"gourmet"},{index:14,genre:"harem"},
+                {index:17,genre:"historical"},{index:16,genre:"horror"},{index:15,genre:"josei"},
+                {index:18,genre:"kids"},{index:19,genre:"magic"},{index:20,genre:"martial-arts"},
+                 {index:23,genre:"mecha"},{index:22,genre:"military"},{index:21,genre:"Mmusic"},
+                  {index:24,genre:"mystery"},{index:25,genre:"parody"},{index:26,genre:"police"},
+                 {index:29,genre:"psychological"},{index:28,genre:"romance"},{index:27,genre:"samurai"},
+                 {index:30,genre:"super-power"},{index:31,genre:"vampire"},{index:32,genre:"yuri"},
+                {index:35,genre:"thriller"},{index:34,genre:"shounen"},{index:33,genre:"shoujo"}];
+                
   return (
     <div>
-    <div className="lg:w-full w-screen flex lg:rounded-md justify-between px-1 bg-gray-600 mb-2 lg:justify-between items-center  text-white drop-shadow-md">
+    <div className="lg:w-full w-screen flex lg:rounded-md justify-between px-1 bg-gray-700 mb-2 lg:justify-between items-center  text-white drop-shadow-md">
         <Link to="/">
         <div className="px-2 text-2xl text-yellow-400 font-extrabold">
             Kurd<small className="text-yellow-300">ANIME</small>
@@ -35,9 +38,9 @@ function Menu() {
                 <div className="grid grid-cols-3 md:grid-cols-4 gap-5">
                    {anime?.map((genre)=>{
                   return(
-                    <Link to={`/${genre.genre}`}>
-                     <div className="flex flex-col">
-                        <h3 key={genre.index} className="text-xs lg:text-sm text-yellow-300">{genre.genre}</h3>
+                    <Link to={`/genre/${genre.genre}`}>
+                     <div key={genre.index} className="flex flex-col">
+                        <h3 className="text-xs lg:text-sm text-yellow-300">{genre.genre}</h3>
                     </div>
                     </Link>
                   )})}
@@ -45,10 +48,11 @@ function Menu() {
                 </div>
             </div>
         </div>
-         
+         <Link to={`/${"Likes"}`} >
          <div className=" cursor-pointer px-3 py-4 hover:bg-yellow-300 text-yellow-300 hover:text-black font-bold text-lg ">
-          Types
+          <FavoriteIcon sx={{ fontSize: 36 }} />
          </div>
+         </Link>
                 
         <MediaQuery minWidth={600}>
          <div className=" font-mono h-10  rounded-xl mt-2 mb-3 py-2 mx-3  ">

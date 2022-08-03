@@ -10,6 +10,7 @@ import HashLoader from "react-spinners/HashLoader";
 import Pagination from '@mui/material/Pagination';
 import MediaQuery from 'react-responsive';
 
+
 function Home() {
  
        const {name,genre}=useParams();
@@ -71,7 +72,8 @@ function Home() {
         const handleChange = (event, value) => {
        setPage(value);
        };
-      
+
+
   return (
     <>
      

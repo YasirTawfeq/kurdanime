@@ -4,34 +4,48 @@ import {useParams,Link} from 'react-router-dom'
 import Axios from 'axios';
 import { useState,useEffect } from 'react';
 import HashLoader from "react-spinners/HashLoader";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import {useDispatch} from 'react-redux'
+import {addLike,removeLike} from '../redux/likeSlice'
+import {useSelector} from 'react-redux'
 
 function AnimeHome() {
       
        const {id,title}=useParams();
-       const [loading,setLoading] = useState(false);
+       const [loading,setLoading] = useState(true);
        const [animeList,setAnomeList]=useState([]);
        const [animeDetail,setDetail] = useState([]);
-      
+       const [like,setLike] = useState(false);
+       
+       const dispatch =useDispatch();
+        const liked=useSelector(
+         (state)=>state.likeId
+         );
+         
+  
        useEffect(()=>{
-        setLoading(true);
         Axios.get(`https://gogoanime.herokuapp.com/search?keyw=${title}`) 
         .then((response)=>{
-        console.log(response.data)
         setAnomeList(response.data.filter((para)=>para.animeId===id))
-        setLoading(false);
+        if(liked.data.find((e)=>e.id ===id)){setLike(true)}else{setLike(false)}
         })
         .catch((e)=>{console.log(e);})
 
-      },[id,title])
-
+      },[id,title,liked.data])
+      
        useEffect(()=>{
         Axios.get(`https://gogoanime.herokuapp.com/anime-details/${id}`)
-        .then((response)=>{console.log(response.data); setDetail(response.data)
+        .then((response)=>{ 
+         setDetail(response.data)
         })
         .catch((e)=>{console.log(e);})
       },[id])
       let film;
       if(animeDetail.totalEpisodes>0){film=true}else{film=false};
+
+      setTimeout(function(){ setLoading(false);},2000)
+       
     return (
     <>
      {loading? 
@@ -45,13 +59,13 @@ function AnimeHome() {
        <img className=" w-full h-80 lg:min-h-full lg:rounded-tr-3xl object-cover " src={anime.animeImg} alt={anime.animeTitle} />
       </div>
       <div className="lg:w-1/2 lg:border-r-2 border-yellow-300 lg:min-h-full ">
-       <div className=" w-full  mt-2  p-3 flex justify-center items-center border-b-2 border-yellow-300">
+       <div className=" w-full  mt-2  p-3 flex justify-between items-center border-b-2 border-yellow-300">
         <Link to="/Home" className="fixed top-3 left-3" >
           <svg className=" cursor-pointer bg-yellow-300 w-9 h-9  rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M447.1 256C447.1 273.7 433.7 288 416 288H109.3l105.4 105.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448s-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L109.3 224H416C433.7 224 447.1 238.3 447.1 256z"/></svg>
         </Link>
-        <p className=" text-xl font-bold">{anime.animeTitle}</p>
-      
-       </div>
+         <p className=" text-xl font-bold">{anime.animeTitle}</p>
+         <i className="cursor-pointer"  onClick={()=>{setLike(!like);if(!like){dispatch(addLike({id:anime.animeId,title:anime.animeTitle,img:anime.animeImg}))}else{dispatch(removeLike({id:anime.animeId,title:anime.animeTitle,img:anime.animeImg}))} }} >{like?<FavoriteIcon sx={{ fontSize: 36 }} />:<FavoriteBorderIcon sx={{ fontSize: 36 }} />}</i>
+        </div>
 
         <ul className="w-full  mt-3 p-4 text-left  flex flex-wrap justify-center">
           {animeDetail.genres?.map((genre)=>{
