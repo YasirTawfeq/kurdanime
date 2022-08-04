@@ -27,7 +27,6 @@ root.render(
        <Route path="/AnimeHome/:id/:title" element={<AnimeHome/>} />
        <Route path="/Watch/:id/:title" element={<Watch/>} />
        <Route path="/*" element={<NotFound/>}/>
-
      </Routes>
    </BrowserRouter>
   </Provider>

@@ -1,6 +1,6 @@
 import React ,{ useState,useEffect } from 'react'
 import '../App.css';
-import Navbar from './Navbar';
+import Main from './Main';
 import NewEpisode from './NewEpisode';
 import Footer from './Footer';
 import AnimatedText from 'react-animated-text-content';
@@ -43,7 +43,7 @@ function App() {
     
     </div>
      :<>
-     <Navbar />
+     <Main />
      <NewEpisode />
      <Footer />
      </>}

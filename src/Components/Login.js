@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {Link as Links} from 'react-router-dom';
 
+/* code for login page using MUI */
 function Brand() {
   return (
     <Typography variant="body2" align="center" >

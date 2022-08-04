@@ -11,9 +11,11 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {Link as Links} from 'react-router-dom';
+/* code for signup page using MUI */
 
 function Brand() {
   return (
+    
     <Typography variant="body2" align="center" >
       <Links color="#fde047" to="/">
         <p className=" text-yellow-300 m-5 text-2xl xl:text-3xl font-bold tracking-wider">KURD<small>ANIME</small></p> 
