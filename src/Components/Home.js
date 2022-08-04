@@ -30,7 +30,7 @@ function Home() {
         setLoading(true);
         if(genre){
         Axios.get(`https://gogoanime.herokuapp.com/genre/${genre}?page=${page}`)
-        .then((response)=>{console.log(response.data);
+        .then((response)=>{
         setAnomeList(response.data)
         setLoading(false);
         }).catch((e)=>{console.log(e);})

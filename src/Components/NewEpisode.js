@@ -13,7 +13,7 @@ function NewEpisode() {
        /* API request for new episodes*/
        useEffect(()=>{
          Axios.get(`https://gogoanime.herokuapp.com/recent-release?type=${type}&page=${page}`)
-         .then((response)=>{console.log(response.data)
+         .then((response)=>{
          setNewEpisode(response.data)
          }).catch((e)=>{console.log(e);})
        },[type,page]);
