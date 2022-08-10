@@ -1,8 +1,8 @@
 import React ,{ useState,useEffect } from 'react'
-import '../App.css';
-import Main from './Main';
-import NewEpisode from './NewEpisode';
-import Footer from './Footer';
+import './App.css';
+import Main from './Components/Main';
+import NewEpisode from './Components/NewEpisode';
+import Footer from './Components/Footer';
 import AnimatedText from 'react-animated-text-content';
 
 function App() {

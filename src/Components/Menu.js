@@ -33,7 +33,7 @@ function Menu() {
              <button className="px-3 py-4 group-hover:bg-yellow-300 font-bold text-yellow-300 text-lg  group-hover:text-black">
                  Genres
              </button>
-           <div className="hidden group-hover:flex flex-col absolute left-0 p-10 w-full rounded-lg bg-gray-700 mt-0 text-black duration-300">
+           <div className="hidden group-hover:flex flex-col group-hover:z-[50] absolute left-0 p-10 w-full rounded-lg bg-gray-700 mt-0 text-black duration-300">
               <div className="pb-5">
                 <h2 className="text-xl font-bold text-yellow-300 ">Genres</h2>
               </div>

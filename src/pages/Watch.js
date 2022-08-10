@@ -45,7 +45,7 @@ function Watch() {
         <center key={watchList.animeId} className="text-yellow-300">  
         {/* vidstream video player */}
          <div className="w-full  ">
-          <iframe key={url} className="w-full fixed lg:static top-0 aspect-square lg:aspect-video lg:rounded-t-3xl " allowFullScreen src={url}  title={watchList.animeTitle}></iframe>
+          <iframe key={url} className="w-full fixed lg:static top-0 aspect-square lg:aspect-video  lg:rounded-t-3xl " allowFullScreen src={url}  title={watchList.animeTitle}></iframe>
          </div>
          {/* number of current episode */}
           <div className=" w-full  mt-64 lg:mt-0  top-64 bg-gray-800 shadow-sm shadow-orange-300  p-3 flex justify-between items-center border-b-2 border-yellow-300">
@@ -70,7 +70,7 @@ function Watch() {
           </div>)}
        </div>
         <Link to={`/AnimeHome/${id}/${title}`} >
-          <svg className=" cursor-pointer fixed top-3 left-3 bg-yellow-300 w-9 h-9  rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M447.1 256C447.1 273.7 433.7 288 416 288H109.3l105.4 105.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448s-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L109.3 224H416C433.7 224 447.1 238.3 447.1 256z"/></svg>
+           <i class=" fixed top-3 left-3 fa-solid fa-arrow-left text-3xl bg-gray-500 py-0.5 px-2 rounded-full "></i>
         </Link>  
       </center>
       <p className="text-center font-bold text-xl py-14 text-yellow-300">KURD<small>ANIME</small></p>

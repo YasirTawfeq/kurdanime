@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
-import App from './Components/App';
-import Login from './Components/Login';
-import SignUp from './Components/SignUp'
-import Home from './Components/Home';
-import Like from './Components/Likes'
-import AnimeHome from './Components/AnimeHome';
-import Watch from './Components/Watch';
-import NotFound from './Components/NotFound';
+import App from './App';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp'
+import Home from './pages/Home';
+import Like from './pages/Likes'
+import AnimeHome from './pages/AnimeHome';
+import Watch from './pages/Watch';
+import NotFound from './pages/NotFound';
 import { store } from './redux/store'
 import { Provider } from 'react-redux'
 

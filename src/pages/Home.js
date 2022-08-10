@@ -1,10 +1,10 @@
 import React from 'react'
 import {useParams} from 'react-router-dom';
-import Footer from './Footer';
-import AnimeCard from './AnimeCard';
-import AnimeSmallCard from './AnimeSmallCard';
+import Footer from '../Components/Footer';
+import AnimeCard from '../Components/AnimeCard';
+import AnimeSmallCard from '../Components/AnimeSmallCard';
 import Axios from 'axios';
-import Menu from './Menu';
+import Menu from '../Components/Menu';
 import { useState,useEffect} from 'react';
 import HashLoader from "react-spinners/HashLoader";
 import Pagination from '@mui/material/Pagination';
@@ -48,7 +48,7 @@ function Home() {
        
         /*API request to search for anime */
         useEffect(()=>{
-        Axios.get(`https://gogoanime.herokuapp.com/search?keyw=${input}`) 
+        Axios.get(`https://gogoanime.herokuapp.com/search?keyw=${"king"||input}`) 
         .then((response)=>{
          setSearch(response.data)
         if(name){ setTimeout(()=>{ setStatu(true);},100)}
@@ -80,7 +80,7 @@ function Home() {
        setPage(value);
        };
 
-
+       console.log(animeList)
   return (
     <>
      
@@ -169,7 +169,7 @@ function Home() {
          <div className="flex flex-row-reverse flex-wrap justify-evenly p-0  ">
             {animeList?.map((anime)=>{
             return(      
-            <AnimeCard  key={anime.animeId} id={anime.animeId} title={anime.animeTitle} img={anime.animeImg}/>
+            <AnimeCard  key={anime.animeId} date={anime.releasedDate} id={anime.animeId} title={anime.animeTitle} img={anime.animeImg}/>
             )})}
           </div>
           <div className="bg-gray-500 text-yellow-300 flex  justify-center rounded-lg">

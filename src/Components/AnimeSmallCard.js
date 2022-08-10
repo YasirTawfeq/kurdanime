@@ -1,6 +1,6 @@
 import '../App.css';
 import {Link} from 'react-router-dom';
-import {delimiter} from './asset/TextLimiter';
+import {delimiter} from '../asset/TextLimiter';
 
 /* anime small card*/
 function AnimeSmallCard(anime) {

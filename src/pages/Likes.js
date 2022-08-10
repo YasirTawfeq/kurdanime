@@ -2,8 +2,8 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {useState,useEffect} from 'react'
 import HashLoader from "react-spinners/HashLoader";
-import Menu from './Menu'
-import AnimeCard from './AnimeCard'
+import Menu from '../Components/Menu'
+import AnimeCard from '../Components/AnimeCard'
 import {useSelector} from 'react-redux'
 
 
