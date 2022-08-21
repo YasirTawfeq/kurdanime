@@ -166,7 +166,7 @@ function Home() {
           )})}
         </div>
       :<>{/*code for popular anime*/}
-         <div className="grid 2xl:grid-cols-5 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 place-items-center ">
+         <div className="grid 2xl:grid-cols-5 xl:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 place-items-center ">
             {animeList?.map((anime)=>{
             return(      
             <AnimeCard  key={anime.animeId} date={anime.releasedDate} id={anime.animeId} title={anime.animeTitle} img={anime.animeImg}/>
