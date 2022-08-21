@@ -24,7 +24,7 @@ function NewEpisode() {
       
   return (
     <>
-    <div className=" m-5 md:m-3 ">
+    <div className=" m-1 ">
       {/* language option buttons */}
       <div className=" font-mono w-full h-10 bg-yellow-300 rounded-xl mt-2 mb-3 py-1.5 ">
        <div className="flex justify-between lg:justify-evenly mx-3 ">
@@ -38,10 +38,10 @@ function NewEpisode() {
        </div>
       </div>
        {/* new episodes code */}
-       <div className="text-2xl text-yellow-300 my-4 text-center font-bold ">
+       <div className="text-xl lg:text-2xl text-yellow-300 my-4 text-center font-bold ">
          New Episodes
        </div>  
-      <div className="flex flex-row-reverse flex-wrap justify-evenly p-0 lg:px-20 ">
+      <div className="grid xl:grid-cols-6 lg:grid-cols-5  md:grid-cols-4 sm:grid-cols-3 grid-cols-2 place-items-center">
          {newEpisod.slice(0,21)?.map((anime)=>{
           return(
            <AnimeCard  key={anime.episodeId} num={anime.episodeNum} id={anime.animeId} title={anime.animeTitle} img={anime.animeImg} subORdub={anime.subOrDub}/>

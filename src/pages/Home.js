@@ -86,7 +86,7 @@ function Home() {
      
     {loading? 
     <div className=" flex justify-center items-center rounded-3xl  bg-gray-800 min-h-screen text-yellow-300 "><HashLoader color={"yellow"} loading={loading} size={60} /></div>
-    :<div className=" p-0 lg:p-4">
+    :<div className=" p-0 lg:p-0">
      
       <Menu />
         {/*search for anime form */}
@@ -116,9 +116,9 @@ function Home() {
            </div>
          </div>
       
-      <div className="flex lg:flex-row-reverse justify-between flex-col-reverse">
+      <div className="flex xl:flex-row-reverse justify-between flex-col-reverse">
 
-      <div className="text-yellow-300 grid grid-cols-1 grid-rows-2  lg:w-1/4 ">
+      <div className="text-yellow-300 grid grid-cols-1 grid-rows-2  xl:w-1/4 ">
         {/*code for top airing anime*/}
         <div className=" mt-3 p-3">
          <div className=" font-mono rounded-xl py-1.5  ">
@@ -156,7 +156,7 @@ function Home() {
 
       </div>
 
-      <div className=" lg:w-3/4 w-full mt-1">
+      <div className=" xl:w-3/4 w-full mt-1 p-2 ">
       {/*code for search anime*/}
       {state?
         <div className="flex flex-row-reverse flex-wrap justify-evenly p-0  "> 
@@ -166,7 +166,7 @@ function Home() {
           )})}
         </div>
       :<>{/*code for popular anime*/}
-         <div className="flex flex-row-reverse flex-wrap justify-evenly p-0  ">
+         <div className="grid 2xl:grid-cols-5 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 place-items-center ">
             {animeList?.map((anime)=>{
             return(      
             <AnimeCard  key={anime.animeId} date={anime.releasedDate} id={anime.animeId} title={anime.animeTitle} img={anime.animeImg}/>

@@ -30,7 +30,7 @@ function Likes() {
         {loading?<div className=" flex justify-center items-center rounded-3xl  bg-gray-800 min-h-screen text-yellow-300 "><HashLoader color={"yellow"} loading={loading} size={60} /></div>
         :<div> 
           {/*Navbar*/}
-          <div className="m-0 lg:m-4"><Menu/></div>
+          <div className="m-0 "><Menu/></div>
           {/*code for if there is no liked anime*/}
           {liked?
            <div className=" flex flex-col items-center justify-center min-h-screen p-2 rounded-md text-center text-yellow-300 text-xl font-bold  " >

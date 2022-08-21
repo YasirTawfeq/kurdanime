@@ -63,10 +63,10 @@ function AnimeHome() {
             <div className="lg:w-1/2 lg:border-r-2 border-yellow-300 lg:min-h-full ">
               <div className=" w-full  mt-2  p-3 flex justify-between items-center border-b-2 border-yellow-300">
                 <Link to="/Home" className="fixed top-3 left-3" >
-                  <i className="fa-solid fa-arrow-left text-3xl bg-gray-500 py-0.5 px-2 rounded-full "></i>
+                  <i className="fa-solid fa-arrow-left text-3xl bg-gray-500 py-0.5 px-[7px] rounded-full "></i>
                  </Link>
-                <p className=" text-xl font-bold">{anime.animeTitle}</p>
-                <i className="cursor-pointer"  onClick={()=>{setLike(!like);if(!like){dispatch(addLike({id:anime.animeId,title:anime.animeTitle,img:anime.animeImg}))}else{dispatch(removeLike({id:anime.animeId,title:anime.animeTitle,img:anime.animeImg}))} }} >{like?<FavoriteIcon sx={{ fontSize: 36 }} />:<FavoriteBorderIcon sx={{ fontSize: 36 }} />}</i>
+                <p className=" text-lg lg:text-xl font-bold">{anime.animeTitle}</p>
+                <i className="cursor-pointer"  onClick={()=>{setLike(!like);if(!like){dispatch(addLike({id:anime.animeId,title:anime.animeTitle,img:anime.animeImg}))}else{dispatch(removeLike({id:anime.animeId,title:anime.animeTitle,img:anime.animeImg}))} }} >{like?<FavoriteIcon sx={{ fontSize: 30 }} />:<FavoriteBorderIcon sx={{ fontSize: 30 }} />}</i>
              </div>
              {/*code for anime genres*/}
              <ul className="w-full  mt-3 p-4 text-left  flex flex-wrap justify-center">
@@ -86,7 +86,7 @@ function AnimeHome() {
              </ul>
              {/* code to disable Watch button if there was no episode to watch (works for upcoming anime) */}
              {film?
-              <div className="w-full mt-3">
+              <div className="w-full mt-8">
                 <Link to={`/Watch/${anime.animeId}/${title}`}>
                  <div className="w-full p-2 font-bold uppercase text-gray-600 bg-yellow-300 rounded-lg cursor-pointer text-center "> Watch  </div>
                </Link>

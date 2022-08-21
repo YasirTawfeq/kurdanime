@@ -50,7 +50,7 @@ function Watch() {
          {/* number of current episode */}
           <div className=" w-full  mt-64 lg:mt-0  top-64 bg-gray-800 shadow-sm shadow-orange-300  p-3 flex justify-between items-center border-b-2 border-yellow-300">
            <p className=" text-sm lg:text-lg font-bold">{watchList.animeTitle}</p>
-           <p className=" text-sm lg:text-lg font-bold">Episod {lastpart}</p>
+           <p className=" text-sm lg:text-lg font-bold">Episode {lastpart}</p>
           </div>
          {/* code for anime genres */}
          <div className="w-full  mt-3 mb-0">
