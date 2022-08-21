@@ -1,9 +1,10 @@
-import React from 'react'
+import React,{ useState} from 'react'
 import {Link} from 'react-router-dom'
 import MediaQuery from 'react-responsive';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function Menu() {
+    const[open,setOpen]=useState(false);
     /* Genres */
     const anime=[{index:0,genre:"action"},{index:1,genre:"adventure"},{index:2,genre:"cars"},
                  {index:5,genre:"comedy"},{index:4,genre:"crime"},{index:3,genre:"dementia"},
@@ -29,11 +30,11 @@ function Menu() {
          </Link>
         <div className="flex px-2 " >   
          {/* code for genre options */}     
-          <div className="group">
-             <button className="px-3 py-4 group-hover:bg-yellow-300 font-bold text-yellow-300 text-lg  group-hover:text-black">
+          <div>
+             <button onClick={() =>setOpen(!open)} className="px-3 py-4 hover:bg-yellow-300 font-bold text-yellow-300 text-lg  hover:text-black">
                  Genres
              </button>
-           <div className="hidden group-hover:flex flex-col group-hover:z-[50] absolute left-0 p-10 w-full rounded-lg bg-gray-700 mt-0 text-black duration-300">
+           <div className={!open?"hidden":"flex flex-col z-[50] absolute left-0 p-10 w-full rounded-lg bg-gray-700 mt-0 text-black duration-300"}>
               <div className="pb-5">
                 <h2 className="text-xl font-bold text-yellow-300 ">Genres</h2>
               </div>
