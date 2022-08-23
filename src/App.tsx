@@ -7,7 +7,7 @@ import AnimatedText from 'react-animated-text-content';
 
 function App() {
 
-   const [loading,setLoading] = useState(false);
+   const [loading,setLoading] = useState<boolean>(false);
         
        useEffect(()=>{
        setLoading(true);

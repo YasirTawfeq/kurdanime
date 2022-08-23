@@ -6,9 +6,9 @@ import { useState,useEffect } from 'react';
 import Pagination from '@mui/material/Pagination';
 
 function NewEpisode() {
-       const [newEpisod,setNewEpisode]=useState([]);
-       const [type,setType]= useState(1);
-       const [page,setPage]= useState(1);
+       const [newEpisod,setNewEpisode]=useState<Array<{animeId:number;episodeId:number;animeTitle:string;animeImg:any;episodeNum:number;subOrDub:string;}>>([{animeId:0,episodeId:0,animeTitle:"",animeImg:"",episodeNum:0,subOrDub:""}]);
+       const [type,setType]= useState<number>(1);
+       const [page,setPage]= useState<number>(1);
 
        /* API request for new episodes*/
        useEffect(()=>{
@@ -18,7 +18,7 @@ function NewEpisode() {
          }).catch((e)=>{console.log(e);})
        },[type,page]);
 
-      const handleChange = (event, value) => {
+      const handleChange = (event:any, value:number) => {
        setPage(value);
        };
       
@@ -44,7 +44,7 @@ function NewEpisode() {
       <div className="grid xl:grid-cols-6 lg:grid-cols-5  md:grid-cols-4 sm:grid-cols-3 grid-cols-2 place-items-center">
          {newEpisod.slice(0,21)?.map((anime)=>{
           return(
-           <AnimeCard  key={anime.episodeId} num={anime.episodeNum} id={anime.animeId} title={anime.animeTitle} img={anime.animeImg} subORdub={anime.subOrDub}/>
+           <AnimeCard  key={anime.episodeId} num={anime.episodeNum} id={anime.animeId} title={anime.animeTitle} image={anime.animeImg} subORdub={anime.subOrDub}/>
          )})}
       </div>
       <div className="bg-gray-500 text-yellow-300 flex  justify-center rounded-lg">

@@ -14,15 +14,15 @@ import MediaQuery from 'react-responsive';
 function Home() {
  
        const {name,genre}=useParams();
-       const [loading,setLoading] = useState(false);
-       const [animeList,setAnomeList]=useState([]);
+       const [loading,setLoading] = useState<boolean>(false);
+       const [animeList,setAnomeList]=useState<Array<{animeTitle:string;animeId:number;animeImg:string;releasedDate:number}>>([]);
        const [top,setTop]=useState([]);
        const [movie,setMovie]=useState([]);
-       const [state,setStatu] = useState(false);
-       const [input,setInput] = useState(name);
-       const [search,setSearch]= useState("");
-       const [type,setType]= useState(1);
-       const [page,setPage]= useState(1);
+       const [state,setStatu] = useState<boolean>(false);
+       const [input,setInput] = useState<any>(name);
+       const [search,setSearch]= useState<Array<{animeTitle:string;animeId:number;animeImg:string;}>>([{animeTitle:"",animeId:0,animeImg:""}]);
+       const [type,setType]= useState<number>(1);
+       const [page,setPage]= useState<number>(1);
        
        /*API request for anime genre */
 
@@ -48,7 +48,7 @@ function Home() {
        
         /*API request to search for anime */
         useEffect(()=>{
-        Axios.get(`https://gogoanime.herokuapp.com/search?keyw=${"king"||input}`) 
+        Axios.get(`https://gogoanime.herokuapp.com/search?keyw=${input||"king"}`) 
         .then((response)=>{
          setSearch(response.data)
         if(name){ setTimeout(()=>{ setStatu(true);},100)}
@@ -72,15 +72,15 @@ function Home() {
         .catch((e)=>{console.log(e);})
         },[])
        
-        const submitHandler=(e)=>{
+        const submitHandler=(e:any)=>{
         e.preventDefault();
         setStatu(true);}
 
-        const handleChange = (event, value) => {
-       setPage(value);
-       };
+        const handleChange = (event:any, value:number) => {
+        setPage(value);
+        };
 
-       console.log(animeList)
+      
   return (
     <>
      
@@ -93,7 +93,7 @@ function Home() {
         <form className="flex items-center mb-3 mx-1 px-1" onSubmit={submitHandler}>   
           <label htmlFor="simple-search" className="sr-only">Search</label>
           <div className="w-full">
-            <input type="text" id="simple-search" value={input} onChange={(e) =>setInput(e.target.value)} className="bg-gray-50 border border-yellow-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-yellow-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500" placeholder="Anime Name ..." required="Enter the name please"/>
+            <input type="text" id="simple-search" value={input} onChange={(e) =>setInput(e.target.value)} className="bg-gray-50 border border-yellow-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-yellow-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500" placeholder="Anime Name ..." required/>
           </div>
          <button type="submit" className="p-2.5 ml-2 text-sm font-medium text-black bg-yellow-300 rounded-lg border border-yellow-700 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-300 dark:hover:bg-yellow-600 dark:focus:ring-yellow-800">
            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
@@ -127,7 +127,7 @@ function Home() {
              Top Airing
             </div>
             <div className="flex flex-col-reverse flex-wrap justify-center p-0 ">
-              {top?.map((anime)=>{
+              {top?.map((anime:{animeTitle:string;animeId:number;animeImg:string;latestEp:number;})=>{
               return(
               <AnimeSmallCard  key={anime.animeId} id={anime.animeId} num={anime.latestEp} title={anime.animeTitle} img={anime.animeImg}/>
                )})}
@@ -144,7 +144,7 @@ function Home() {
                Upcoming Movies
              </div>
              <div className="flex flex-col-reverse flex-wrap justify-center p-0 ">
-               {movie?.map((anime)=>{
+               {movie?.map((anime:{animeTitle:string;animeId:number;animeImg:string;latestEp:number;})=>{
                return(
                <AnimeSmallCard  key={anime.animeId} id={anime.animeId} num={anime.latestEp} title={anime.animeTitle} img={anime.animeImg}/>
                )})}
@@ -160,16 +160,16 @@ function Home() {
       {/*code for search anime*/}
       {state?
         <div className="flex flex-row-reverse flex-wrap justify-evenly p-0  "> 
-          {search?.map((anime)=>{
+          {search?.map((anime:{animeTitle:string;animeId:number;animeImg:string;})=>{
           return(
-          <AnimeCard  key={anime.animeId} id={anime.animeId} title={anime.animeTitle} img={anime.animeImg}/>
+          <AnimeCard  key={anime.animeId} id={anime.animeId} title={anime.animeTitle} image={anime.animeImg}/>
           )})}
         </div>
       :<>{/*code for popular anime*/}
          <div className="grid 2xl:grid-cols-5 xl:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 place-items-center ">
             {animeList?.map((anime)=>{
             return(      
-            <AnimeCard  key={anime.animeId} date={anime.releasedDate} id={anime.animeId} title={anime.animeTitle} img={anime.animeImg}/>
+            <AnimeCard  key={anime.animeId} date={anime.releasedDate} id={anime.animeId} title={anime.animeTitle} image={anime.animeImg}/>
             )})}
           </div>
           <div className="bg-gray-500 text-yellow-300 flex  justify-center rounded-lg">

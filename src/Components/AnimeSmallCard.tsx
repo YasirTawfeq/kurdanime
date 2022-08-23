@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {delimiter} from '../asset/TextLimiter';
 
 /* anime small card*/
-function AnimeSmallCard(anime) {
+function AnimeSmallCard(anime:{id?:number;title:string;img?:any;num?:number;subORdub?:string;}) {
   return (
    <Link to={`/AnimeHome/${anime.id}/${anime.title}`}>
        <div className="m-0.5  flex bg-gray-600 rounded-lg  ">

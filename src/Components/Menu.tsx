@@ -4,7 +4,7 @@ import MediaQuery from 'react-responsive';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function Menu() {
-    const[open,setOpen]=useState(false);
+    const[open,setOpen]=useState<boolean>(false);
     /* Genres */
     const anime=[{index:0,genre:"action"},{index:1,genre:"adventure"},{index:2,genre:"cars"},
                  {index:5,genre:"comedy"},{index:4,genre:"crime"},{index:3,genre:"dementia"},

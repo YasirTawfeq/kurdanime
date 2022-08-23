@@ -6,17 +6,17 @@ import HashLoader from "react-spinners/HashLoader";
 
 function Watch() {
        const {id,title}=useParams();
-       const [url,setUrl] = useState("");
-       const [epsId,setEpsId] = useState("");
-       const [watchList,setWatchList]=useState([]);
-       const [loading,setLoading] = useState(false);
+       const [url,setUrl] = useState<string>("");
+       const [epsId,setEpsId] = useState<string>("");
+       const [watchList,setWatchList]=useState<{animeId:number,animeTitle:string,genres:string[];episodesList:[{episodeId:string,episodeNum:number}]}>({animeId:0,animeTitle:"",genres:[""],episodesList:[{episodeId:"",episodeNum:0}]});
+       const [loading,setLoading] = useState<boolean>(false);
        /* API request for anime Id */
        useEffect(()=>{
          setLoading(true);
          Axios.get(`https://gogoanime.herokuapp.com/anime-details/${id}`)
          .then((response)=>{ 
          setWatchList(response.data);
-         const firstEpisode=response.data.episodesList.length-1;
+         const firstEpisode:number=response.data.episodesList.length-1;
          setEpsId(response.data.episodesList[firstEpisode].episodeId);
          setLoading(false);
          })
@@ -34,15 +34,15 @@ function Watch() {
          },[epsId])
 
       
-      let urlchange=epsId.lastIndexOf('-');
-      let lastpart=epsId.substring(urlchange+1);
+      let urlchange:number=epsId.lastIndexOf('-');
+      let lastpart:string=epsId.substring(urlchange+1);
 
 
     return (<>
       {loading? 
        <div className=" flex justify-center items-center rounded-3xl  bg-gray-800 min-h-screen text-yellow-300"><HashLoader color={"yellow"} loading={loading} size={60} /></div>
       :<div>
-        <center key={watchList.animeId} className="text-yellow-300">  
+        <div key={watchList.animeId} className=" text-center text-yellow-300">  
         {/* vidstream video player */}
          <div className="w-full  ">
           <iframe key={url} className="w-full fixed lg:static top-0 aspect-square lg:aspect-video  lg:rounded-t-3xl " allowFullScreen src={url}  title={watchList.animeTitle}></iframe>
@@ -57,7 +57,7 @@ function Watch() {
            <div className=" flex justify-center flex-wrap ">
             <ul className="w-full  mt-3 p-4 text-left  flex flex-wrap justify-center">
               {watchList.genres?.map((genre)=>{
-                return <li key={genre.index} className="p-1 px-2 mx-1 text-yellow-300 text-center font-bold text-xs lg:text-sm border-yellow-300 border-2 rounded-lg mt-2" >{genre}</li>
+                return <li key={genre} className="p-1 px-2 mx-1 text-yellow-300 text-center font-bold text-xs lg:text-sm border-yellow-300 border-2 rounded-lg mt-2" >{genre}</li>
               })}
             </ul>          
           </div>
@@ -70,9 +70,9 @@ function Watch() {
           </div>)}
        </div>
         <Link to={`/AnimeHome/${id}/${title}`} >
-           <i class=" fixed top-3 left-3 fa-solid fa-arrow-left text-3xl bg-gray-500 py-0.5 px-2 rounded-full "></i>
+           <i className=" fixed top-3 left-3 fa-solid fa-arrow-left text-3xl bg-gray-500 py-0.5 px-2 rounded-full "></i>
         </Link>  
-      </center>
+      </div>
       <p className="text-center font-bold text-xl py-14 text-yellow-300">KURD<small>ANIME</small></p>
      </div>}
      </>

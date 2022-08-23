@@ -3,12 +3,12 @@ import {Link} from 'react-router-dom';
 import {delimiter} from '../asset/TextLimiter';
 
  /* Anime big card*/
-function Anime(anime) {
+function Anime(anime:{id?:number;title:string;image?:any;date?:number;num?:number;subORdub?:string;}) {
   return (
     <Link to={`/AnimeHome/${anime.id}/${anime.title}`}>
        <div className="mx-0.5 w-44 h-[280px] overflow-hidden rounded-sm text-yellow-300 ">
         <div className=" hover:relative z-0 group  bg-gray-600 text-yellow-300 hover:bg-yellow-300 hover:text-gray-600">
-         <img className=" group-hover:brightness-50   w-full h-52 " src={anime.img} alt={anime.title}/>
+         <img className=" group-hover:brightness-50   w-full h-52 " src={anime.image} alt={anime.title}/>
           <div className="flex justify-between px-1 ">
            {anime.num?<p>{"Eps "+anime.num}</p>:<p>{anime.date}</p>}
            {anime.subORdub?<p>{anime.subORdub}</p>:<p>SUB</p>}

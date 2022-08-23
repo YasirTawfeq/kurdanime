@@ -12,12 +12,12 @@ import NotFound from './pages/NotFound';
 import { store } from './redux/store'
 import { Provider } from 'react-redux'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <Provider store={store}>
    <BrowserRouter>
      <Routes>
-       <Route exact path="/" element={<App />} />
+       <Route path="/" element={<App />} />
        <Route path="/Login" element={<Login />} />
        <Route path="/SignUp" element={<SignUp />} />
        <Route path="/Home" element={<Home />} />

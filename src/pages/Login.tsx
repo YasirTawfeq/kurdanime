@@ -4,6 +4,8 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -11,11 +13,10 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {Link as Links} from 'react-router-dom';
-/* code for signup page using MUI */
 
+/* code for login page using MUI */
 function Brand() {
   return (
-    
     <Typography variant="body2" align="center" >
       <Links color="#fde047" to="/">
         <p className=" text-yellow-300 m-5 text-2xl xl:text-3xl font-bold tracking-wider">KURD<small>ANIME</small></p> 
@@ -26,8 +27,8 @@ function Brand() {
 
 const theme = createTheme();
 
-export default function SignUp() {
-  const handleSubmit = (e) => {
+export default function Login() {
+  const handleSubmit = (e:any) => {
     e.preventDefault();
     const data = new FormData();
     console.log({
@@ -46,7 +47,7 @@ export default function SignUp() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://wallpaperaccess.com/full/1111994.jpg)',
+            backgroundImage: 'url(https://wallpapers.oceanofwallpapers.com/wallpapers/previews/wallpaper-96753x-752626-Preview.webp)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -65,24 +66,13 @@ export default function SignUp() {
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: '#fde047',':hover':{bgcolor: '#fbbf24'} }}>
-             <Links to='/Login'> <div className=" cursor-pointer text-black"><ArrowBackIcon /></div></Links>
+             <Links to='/'> <div className=" cursor-pointer text-black"><ArrowBackIcon /></div></Links>
             </Avatar>
             <Typography component="h1" variant="h5">
-              <p className="text-yellow-300">Sign Up</p>
+              <p className="text-yellow-300">Login</p>
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                variant="filled"
-                id="userName"
-                label="User Name"
-                name="userName"
-                autoComplete="User Name"
-                sx={{ bgcolor: '#fde047',border: '1px solid',borderRadius:'5px' }}
-              />
-              <TextField
+             <TextField
                 margin="normal"
                 required
                 fullWidth
@@ -98,7 +88,7 @@ export default function SignUp() {
                 margin="normal"
                 required
                 fullWidth
-                 variant="filled"
+                variant="filled"
                 name="password"
                 label="Password"
                 type="password"
@@ -106,15 +96,32 @@ export default function SignUp() {
                 autoComplete="current-password"
                  sx={{ bgcolor: '#fde047',border: '1px solid',borderRadius:'5px' }}
               />
+              <FormControlLabel
+                sx={{pr:1, color: '#fde047' }}
+                control={<Checkbox sx={{color: '#fde047', '&.Mui-checked':{color:'#fde047'}, }} value="remember" />}
+                label="Remember me"
+              />
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2, bgcolor: '#fde047',':hover': {bgcolor: '#fbbf24'} }}
               >
-                <p className="text-black">Sign Up</p>
+                <p className="text-black">Login</p>
               </Button>
-              <Brand sx={{ mt: 5 }} />  
+              <Grid container>
+                <Grid item xs>
+                  <Links to="#"  >
+                     <p className="text-yellow-300">Forgot password?</p>
+                  </Links>
+                </Grid>
+                <Grid item>
+                 <Links to="/SignUp"  >
+                     <p className="text-yellow-300 ">Sign Up</p>
+                  </Links>
+                </Grid>
+              </Grid>
+              <Brand />  
             </Box>
           </Box>
         </Grid>

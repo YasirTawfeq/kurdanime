@@ -9,13 +9,13 @@ import {useSelector} from 'react-redux'
 
 function Likes() {
     
-      const [loading,setLoading] = useState(true);
-      const [liked,setLiked]= useState(false)
+      const [loading,setLoading] = useState<boolean>(true);
+      const [liked,setLiked]= useState<boolean>(false)
       
           
         /*redux geting likeid */
          const like=useSelector(
-         (state)=>state.likeId
+         (state:any)=>state.likeId
          );
          /* code for keeping the like button active */ 
          useEffect(()=>{
@@ -43,9 +43,9 @@ function Likes() {
          {/*code for liked anime*/}
          <div className="text-center text-xl text-yellow-300 font-bold py-4" >Liked Anime</div>
           <div className="flex flex-row-reverse flex-wrap justify-evenly p-0  ">
-            {like.data.map((anime)=>{
+            {like.data.map((anime:{title:string;id:number;image:any;})=>{
             return(    
-             <AnimeCard  key={anime.id} id={anime.id} title={anime.title} img={anime.img}/>
+             <AnimeCard  key={anime.id} id={anime.id} title={anime.title} image={anime.image}/>
             )})}
          </div>
         </>

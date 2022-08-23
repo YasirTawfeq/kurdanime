@@ -13,23 +13,23 @@ import {useSelector} from 'react-redux'
 function AnimeHome() {
       
        const {id,title}=useParams();
-       const [loading,setLoading] = useState(true);
-       const [animeList,setAnomeList]=useState([]);
-       const [animeDetail,setDetail] = useState([]);
+       const [loading,setLoading] = useState<boolean>(true);
+       const [animeList,setAnomeList]=useState<Array<{animeTitle:string;animeId:number;animeImg:string;}>>([]);
+       const [animeDetail,setDetail] = useState<{animeTitle:string;type:string;releasedDate:number;status:string;totalEpisodes:number;synopsis:string;genres:string[];}>({animeTitle:"",type:"",releasedDate:0,status:"",totalEpisodes:0,synopsis:"",genres:[""]});
        const [like,setLike] = useState(false);
        
        /* code for geting likeid */
        const dispatch =useDispatch();
         const liked=useSelector(
-         (state)=>state.likeId
+         (state:any)=>state.likeId
          );
        
        /* API request to find the anime id */  
        useEffect(()=>{
           Axios.get(`https://gogoanime.herokuapp.com/search?keyw=${title}`) 
-          .then((response)=>{
-          setAnomeList(response.data.filter((para)=>para.animeId===id))
-          if(liked.data.find((e)=>e.id ===id)){setLike(true)}else{setLike(false)}
+          .then((response:any)=>{
+          setAnomeList(response.data.filter((para:any)=>para.animeId===id))
+          if(liked.data.find((e:any)=>e.id ===id)){setLike(true)}else{setLike(false)}
           })
           .catch((e)=>{console.log(e);})
         },[id,title,liked.data])
@@ -44,7 +44,7 @@ function AnimeHome() {
          },[id])
          
          /* code to disable Watch button if there was no episode to watch (works for upcoming anime) */
-         let film;
+         let film:boolean;
          if(animeDetail.totalEpisodes>0){film=true}else{film=false};
 
         setTimeout(function(){ setLoading(false);},2000)
@@ -54,8 +54,8 @@ function AnimeHome() {
          <div className=" flex justify-center items-center rounded-3xl  bg-gray-800 min-h-screen text-yellow-300"><HashLoader color={"yellow"} loading={loading} size={60} /></div>
          :<div><>
          {/*code for anime details*/}
-          {animeList?.map((anime)=>{return(
-           <center key={anime.animeId} className="text-yellow-300 h-full ">
+          {animeList?.map((anime:any)=>{return(
+           <div key={anime.animeId} className="text-yellow-300 h-full ">
             <div className=" lg:flex flex-row-reverse p-0 m-0 " >
              <div className="lg:w-1/2">
               <img className=" w-full h-80 lg:min-h-full lg:rounded-tr-3xl object-center " src={anime.animeImg} alt={anime.animeTitle} />
@@ -70,7 +70,7 @@ function AnimeHome() {
              </div>
              {/*code for anime genres*/}
              <ul className="w-full  mt-3 p-4 text-left  flex flex-wrap justify-center">
-               {animeDetail.genres?.map((genre)=>{
+               {animeDetail.genres?.map((genre:any)=>{
                  return <li key={genre.index} className="p-1 px-2 mx-1 text-yellow-300 text-center font-bold text-xs lg:text-sm border-yellow-300 border-2 rounded-lg mt-2" >{genre}</li>
                })}
              </ul>
@@ -94,7 +94,7 @@ function AnimeHome() {
            </div>
          </div>
        </div>  
-     </center>
+     </div>
      )})}
     </>
      <Footer/>
