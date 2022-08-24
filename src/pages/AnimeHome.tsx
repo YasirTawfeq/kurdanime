@@ -66,7 +66,7 @@ function AnimeHome() {
                   <i className="fa-solid fa-arrow-left text-3xl bg-gray-500 py-0.5 px-[7px] rounded-full "></i>
                  </Link>
                 <p className=" text-lg lg:text-xl font-bold">{anime.animeTitle}</p>
-                <i className="cursor-pointer"  onClick={()=>{setLike(!like);if(!like){dispatch(addLike({id:anime.animeId,title:anime.animeTitle,img:anime.animeImg}))}else{dispatch(removeLike({id:anime.animeId,title:anime.animeTitle,img:anime.animeImg}))} }} >{like?<FavoriteIcon sx={{ fontSize: 30 }} />:<FavoriteBorderIcon sx={{ fontSize: 30 }} />}</i>
+                <i className="cursor-pointer"  onClick={()=>{setLike(!like);if(!like){dispatch(addLike({id:anime.animeId,title:anime.animeTitle,image:anime.animeImg}))}else{dispatch(removeLike({id:anime.animeId,title:anime.animeTitle,img:anime.animeImg}))} }} >{like?<FavoriteIcon sx={{ fontSize: 30 }} />:<FavoriteBorderIcon sx={{ fontSize: 30 }} />}</i>
              </div>
              {/*code for anime genres*/}
              <ul className="w-full  mt-3 p-4 text-left  flex flex-wrap justify-center">

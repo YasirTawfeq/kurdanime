@@ -43,7 +43,7 @@ function Likes() {
          {/*code for liked anime*/}
          <div className="text-center text-xl text-yellow-300 font-bold py-4" >Liked Anime</div>
           <div className="flex flex-row-reverse flex-wrap justify-evenly p-0  ">
-            {like.data.map((anime:{title:string;id:number;image:any;})=>{
+            {like.data.map((anime:{title:string;id:number;image:string;})=>{
             return(    
              <AnimeCard  key={anime.id} id={anime.id} title={anime.title} image={anime.image}/>
             )})}
