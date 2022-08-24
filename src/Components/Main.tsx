@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 function Navbar() {
     const [input,setInput] = useState<string>("");
 
-    const submitHandler=(e:any)=>{
+    const submitHandler=(e:React.SyntheticEvent)=>{
        e.preventDefault();
       }
 

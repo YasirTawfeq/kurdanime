@@ -72,7 +72,7 @@ function Home() {
         .catch((e)=>{console.log(e);})
         },[])
        
-        const submitHandler=(e:any)=>{
+        const submitHandler=(e:React.SyntheticEvent)=>{
         e.preventDefault();
         setStatu(true);}
 

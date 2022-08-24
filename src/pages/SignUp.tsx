@@ -27,7 +27,7 @@ function Brand() {
 const theme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (e:any) => {
+  const handleSubmit = (e:React.SyntheticEvent) => {
     e.preventDefault();
     const data = new FormData();
     console.log({
