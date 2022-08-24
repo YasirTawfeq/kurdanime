@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
   
 const initialState = {
-  data: localStorage.getItem('like')?JSON.parse(localStorage.getItem('like')|| ""):[{id:0,image:"",title:""}]
+  data: localStorage.getItem('like')?JSON.parse(localStorage.getItem('like')|| ""):[]
 }
 export const likeSlice = createSlice({
   name: 'likeId',
