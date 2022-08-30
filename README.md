@@ -11,6 +11,13 @@ KURD ANIME is the website to watch popular anime with English subtitles and dub 
  - Download and watch all animes for free
  - All information about the anime wanna watch is available
  - Search and filtering
- 
+
+ ## Technologies used in this project
+  - React js
+  - typescript 
+  - tailwind css 
+  - MUI Design 
+  - Redux 
+  - Responsive UI 
 
 ## API USED [GOGO] (https://github.com/riimuru/gogoanime)

@@ -104,7 +104,10 @@ function Home() {
          {/*chose language code*/}
         <div className=" font-mono h-10  rounded-xl mt-2 mb-3 py-1.5 mx-3  ">
           <div className="flex justify-between mx-2 ">
-           <div className="cursor-pointer my-0 px-2 py-0.5 hover:bg-gray-500 rounded-lg  bg-gray-800 text-yellow-300 text-xl lg:text-2xl font-bold ">{genre?<span className="uppercase">{genre}</span>:<span>Popular</span>}</div>
+           <div className="my-0 px-2 py-0.5 bg-gray-800 text-yellow-300 text-xl lg:text-2xl font-bold ">
+             {genre?<span className="uppercase">{genre}</span>:<span>Popular</span>}
+            </div>
+            
              <MediaQuery maxWidth={600}>
               <div className="flex bg-yellow-300 p-0.5 lg:mr-1 rounded-lg">
                <button className=" text-xs lg:text-sm  cursor-pointer my-0 px-2 py-0.5 focus:bg-gray-600  hover:bg-gray-500 rounded-l-lg  bg-gray-800 text-yellow-300 " onClick={()=>setType(1)} >JP</button>
