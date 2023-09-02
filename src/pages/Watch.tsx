@@ -10,10 +10,11 @@ function Watch() {
        const [epsId,setEpsId] = useState<string>("");
        const [watchList,setWatchList]=useState<{animeId:number,animeTitle:string,genres:string[];episodesList:[{episodeId:string,episodeNum:number}]}>({animeId:0,animeTitle:"",genres:[""],episodesList:[{episodeId:"",episodeNum:0}]});
        const [loading,setLoading] = useState<boolean>(false);
+
        /* API request for anime Id */
        useEffect(()=>{
          setLoading(true);
-         Axios.get(`https://gogoanime.herokuapp.com/anime-details/${id}`)
+         Axios.get(`https://web-production-2ae42.up.railway.app/anime-details/${id}`)
          .then((response)=>{ 
          setWatchList(response.data);
          const firstEpisode:number=response.data.episodesList.length-1;
@@ -25,7 +26,7 @@ function Watch() {
         /* API request for episodes url */
         useEffect(()=>{
           setLoading(true);
-          Axios.get(`https://gogoanime.herokuapp.com/vidcdn/watch/${epsId}`)
+          Axios.get(`https://web-production-2ae42.up.railway.app/vidcdn/watch/${epsId}`)
           .then((response)=>{
           setUrl(response.data.Referer);
           setLoading(false);

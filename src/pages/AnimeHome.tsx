@@ -26,7 +26,7 @@ function AnimeHome() {
        
        /* API request to find the anime id */  
        useEffect(()=>{
-          Axios.get(`https://gogoanime.herokuapp.com/search?keyw=${title}`) 
+          Axios.get(`https://web-production-2ae42.up.railway.app/search?keyw=${title}`) 
           .then((response:any)=>{
           setAnomeList(response.data.filter((para:any)=>para.animeId===id))
           if(liked.data.find((e:any)=>e.id ===id)){setLike(true)}else{setLike(false)}
@@ -36,7 +36,7 @@ function AnimeHome() {
        
        /* API request for anime details */
          useEffect(()=>{
-          Axios.get(`https://gogoanime.herokuapp.com/anime-details/${id}`)
+          Axios.get(`https://web-production-2ae42.up.railway.app/anime-details/${id}`)
           .then((response)=>{ 
           setDetail(response.data)
          })

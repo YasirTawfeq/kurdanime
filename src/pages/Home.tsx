@@ -29,7 +29,7 @@ function Home() {
        useEffect(()=>{
         setLoading(true);
         if(genre){
-        Axios.get(`https://gogoanime.herokuapp.com/genre/${genre}?page=${page}`)
+        Axios.get(`https://web-production-2ae42.up.railway.app/genre/${genre}?page=${page}`)
         .then((response)=>{
         setAnomeList(response.data)
         setLoading(false);
@@ -37,7 +37,7 @@ function Home() {
     
        } else {
         /*API request for popular anime*/
-        Axios.get(`https://gogoanime.herokuapp.com/popular?type=${type}&page=${page}`)
+        Axios.get(`https://web-production-2ae42.up.railway.app/popular?type=${type}&page=${page}`)
         .then((response)=>{
         setAnomeList(response.data);
         setLoading(false);
@@ -48,7 +48,7 @@ function Home() {
        
         /*API request to search for anime */
         useEffect(()=>{
-        Axios.get(`https://gogoanime.herokuapp.com/search?keyw=${input||"king"}`) 
+        Axios.get(`https://web-production-2ae42.up.railway.app/search?keyw=${input||"king"}`) 
         .then((response)=>{
          setSearch(response.data)
         if(name){ setTimeout(()=>{ setStatu(true);},100)}
@@ -58,7 +58,7 @@ function Home() {
         
         /*API request for top airing anime*/
         useEffect(()=>{
-        Axios.get(`https://gogoanime.herokuapp.com/top-airing`) 
+        Axios.get(`https://web-production-2ae42.up.railway.app/top-airing`) 
         .then((response)=>{
          setTop(response.data.slice(5))})
         .catch((e)=>{console.log(e);})
@@ -66,7 +66,7 @@ function Home() {
         
         /*API request for anime movie */
         useEffect(()=>{
-        Axios.get(`https://gogoanime.herokuapp.com/anime-movies`) 
+        Axios.get(`https://web-production-2ae42.up.railway.app/anime-movies`) 
         .then((response)=>{
          setMovie(response.data.slice(15))})
         .catch((e)=>{console.log(e);})
